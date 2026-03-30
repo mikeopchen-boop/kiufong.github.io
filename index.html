@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiu Fong Enterprise Co., Ltd. | Stationery & Home Decor Manufacturer</title>
-    <meta name="description" content="Kiu Fong Enterprise - Leading manufacturer of plastic stationery, art supplies, and wooden home decor since 1971. OEM/ODM available. Export to worldwide.">
+    <title>僑峯企業 | 專業美術用品與木製工藝品</title>
+    <meta name="description" content="僑峯企業 - 54年專業製造優質美術用品、木製工藝品與文具。OEM/ODM服務，出口全球。">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <nav class="nav">
             <div class="logo">
-                <a href="#home">
-                    <span class="logo-text">KIU FONG</span>
-                    <span class="logo-sub">ENTERPRISE</span>
-                </a>
+                <div class="logo-icon">🎨</div>
+                <div class="logo-text">
+                    <span class="logo-name">僑峯企業</span>
+                    <span class="logo-tagline">專業美術用品製造</span>
+                </div>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#export">Export</a></li>
-                <li><a href="#contact" class="btn-contact">Contact Us</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">首頁</a></li>
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#products">產品展示</a></li>
+                <li><a href="#export">外銷服務</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="lang-toggle">
+                <a href="#" class="lang-link active">繁</a>
+                <a href="index-en.html" class="lang-link">EN</a>
+            </div>
+            <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -34,75 +39,106 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Quality Stationery & Home Decor<br>Since 1971</h1>
-            <p class="hero-subtitle">Your Trusted Manufacturing Partner for Plastic Stationery,<br>Art Supplies, and Wooden Home Decor</p>
+            <span class="hero-badge">專業製造 since 1971</span>
+            <h1>優質<span>美術用品</span><br>與木製工藝品</h1>
+            <p class="hero-subtitle">五十四年專業製造經驗，為全球客户提供優質美術用品、木製工藝品及定制文具解决方案。</p>
             <div class="hero-buttons">
-                <a href="#products" class="btn-primary">View Products</a>
-                <a href="#contact" class="btn-secondary">Get in Touch</a>
+                <a href="#products" class="btn btn-primary">探索產品</a>
+                <a href="#contact" class="btn btn-secondary">取得報價</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">54+</span>
+                    <span class="stat-label">年專業經驗</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">879+</span>
+                    <span class="stat-label">產品款式</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">全球</span>
+                    <span class="stat-label">出口供應</span>
+                </div>
             </div>
         </div>
-        <div class="hero-stats">
-            <div class="stat-item">
-                <span class="stat-number">50+</span>
-                <span class="stat-label">Years Experience</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">OEM/ODM</span>
-                <span class="stat-label">Custom Solutions</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">Export</span>
-                <span class="stat-label">Worldwide</span>
-            </div>
-        </div>
+        <div class="hero-decoration"></div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section class="about" id="about">
         <div class="container">
-            <div class="section-header">
-                <h2>About Kiu Fong</h2>
-                <p class="section-subtitle">A Legacy of Quality Since 1971</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Kiu Fong Enterprise Co., Ltd. was established in 1971 in Taipei, Taiwan. With over five decades of experience, we have grown to become a trusted manufacturer and exporter of quality stationery, art supplies, and wooden home decor products.</p>
-                    <p>Our factory in Nangang District, Taipei, is equipped with modern manufacturing facilities to produce plastic stationery, art materials, wooden crafts, and home decoration items. We pride ourselves on delivering products that combine functionality with aesthetic appeal.</p>
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-label">關於我們</span>
+                    <h2>五十四年匠心傳承</h2>
+                    <p>僑峯企業股份有限公司成立於1971年，五十四年來專注於美術用品、木製工藝品及塑膠文具的設計與製造。我們的工廠位於台北市南港區，配備現代化製造設備，為全球客戶提供優質的OEM/ODM服務。</p>
+                    <p>從調色盤到木製畫架，從雕刻工具到陶瓷工藝品，我們致力於將傳統工藝與現代設計完美結合，為世界各地的藝術愛好者和經銷商帶來優質產品。</p>
+                    
                     <div class="about-features">
-                        <div class="feature">
-                            <span class="feature-icon">🏭</span>
-                            <h4>Factory Direct</h4>
-                            <p>Own manufacturing facility with quality control</p>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">🏭</div>
+                            <div>
+                                <h4>自家工廠</h4>
+                                <p>自有製造設施，嚴格品質管制</p>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <span class="feature-icon">🎨</span>
-                            <h4>OEM/ODM Service</h4>
-                            <p>Custom design and private label available</p>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">🎨</div>
+                            <div>
+                                <h4>OEM/ODM 服務</h4>
+                                <p>專業客製化設計與自有品牌</p>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <span class="feature-icon">🌍</span>
-                            <h4>Global Export</h4>
-                            <p>Export license holder since 1978</p>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">🌍</div>
+                            <div>
+                                <h4>全球外銷</h4>
+                                <p>自1978年持有出口許可證</p>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <span class="feature-icon">✓</span>
-                            <h4>Quality Assurance</h4>
-                            <p>Consistent product quality since 1971</p>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">✨</div>
+                            <div>
+                                <h4>品質保証</h4>
+                                <p>五十四年信譽，品質穩定</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-info">
-                    <div class="info-card">
-                        <h3>Company Information</h3>
+                
+                <div class="about-visual">
+                    <div class="about-image-frame">
+                        <div class="placeholder-image">🏠</div>
+                    </div>
+                    <div class="company-info-card">
+                        <h4>公司資料</h4>
                         <ul class="info-list">
-                            <li><strong>Company Name:</strong> Kiu Fong Enterprise Co., Ltd.</li>
-                            <li><strong>Founded:</strong> August 31, 1971</li>
-                            <li><strong>Capital:</strong> NT$ 16,000,000</li>
-                            <li><strong>Business Type:</strong> Manufacturer & Exporter</li>
-                            <li><strong>Tax ID:</strong> 11829322</li>
-                            <li><strong>Export License:</strong> No. 63021457</li>
+                            <li>
+                                <span class="label">公司名稱</span>
+                                <span class="value">僑峯企業股份有限公司</span>
+                            </li>
+                            <li>
+                                <span class="label">英文名稱</span>
+                                <span class="value">Kiu Fong Enterprise Co., Ltd.</span>
+                            </li>
+                            <li>
+                                <span class="label">成立時間</span>
+                                <span class="value">1971年8月31日</span>
+                            </li>
+                            <li>
+                                <span class="label">資本額</span>
+                                <span class="value">NT$ 16,000,000</span>
+                            </li>
+                            <li>
+                                <span class="label">統一編號</span>
+                                <span class="value">11829322</span>
+                            </li>
+                            <li>
+                                <span class="label">出口許可證</span>
+                                <span class="value">第 63021457 號</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -111,122 +147,181 @@
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="products">
+    <section class="products" id="products">
         <div class="container">
             <div class="section-header">
-                <h2>Our Products</h2>
-                <p class="section-subtitle">Stationery, Art Supplies & Home Decor</p>
+                <span class="section-label">產品展示</span>
+                <h2 class="section-title">專業美術用品與工藝品</h2>
+                <p class="section-desc">從木製畫架到陶瓷調色盤，從雕刻工具到彩繪用品，我們提供全方位的美術與工藝產品</p>
             </div>
+            
             <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="product-icon">📎</span>
-                    </div>
-                    <div class="product-content">
-                        <h3>Plastic Stationery</h3>
-                        <ul>
-                            <li>Plastic tape & adhesive products</li>
-                            <li>Office accessories</li>
-                            <li>Document holders</li>
-                            <li>Desk organizers</li>
-                        </ul>
-                        <span class="product-tag">Custom OEM Available</span>
-                    </div>
-                </div>
                 <div class="product-card">
                     <div class="product-image">
                         <span class="product-icon">🎨</span>
                     </div>
-                    <div class="product-content">
-                        <h3>Art Supplies</h3>
-                        <ul>
-                            <li>Art materials & accessories</li>
-                            <li>Craft tools</li>
-                            <li>Drawing supplies</li>
-                            <li>DIY materials</li>
+                    <div class="product-info">
+                        <h3>美術調色工具</h3>
+                        <ul class="product-list">
+                            <li>木製調色盤</li>
+                            <li>瓷製調色盤</li>
+                            <li>陶瓷調色碟</li>
+                            <li>刮刀與混合工具</li>
                         </ul>
-                        <span class="product-tag">Artist Quality</span>
+                        <span class="product-tag">專業美術品質</span>
                     </div>
                 </div>
+                
                 <div class="product-card">
                     <div class="product-image">
-                        <span class="product-icon">🏠</span>
+                        <span class="product-icon">🖼️</span>
                     </div>
-                    <div class="product-content">
-                        <h3>Wooden Home Decor</h3>
-                        <ul>
-                            <li>Wooden crafts</li>
-                            <li>Home decoration items</li>
-                            <li>Handcrafted accessories</li>
-                            <li>Interior decor</li>
+                    <div class="product-info">
+                        <h3>木製畫架與展示</h3>
+                        <ul class="product-list">
+                            <li>木製畫架 (Easel)</li>
+                            <li>木製人像模型 (Manikin)</li>
+                            <li>木製手部模型</li>
+                            <li>木製素描盒</li>
                         </ul>
-                        <span class="product-tag">Handcrafted</span>
+                        <span class="product-tag">精緻木製工藝</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-icon">✂️</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>雕刻與塑造工具</h3>
+                        <ul class="product-list">
+                            <li>雕刻工具組</li>
+                            <li>雕刻筆筒</li>
+                            <li>木製雕塑工具</li>
+                            <li>線端處理工具</li>
+                        </ul>
+                        <span class="product-tag">OEM 可定制</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-icon">🏺</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>陶瓷工藝品</h3>
+                        <ul class="product-list">
+                            <li>陶瓷三腳架</li>
+                            <li>瓷製調色盤</li>
+                            <li>陶瓷工具配件</li>
+                            <li>木陶瓷結合製品</li>
+                        </ul>
+                        <span class="product-tag">傳統工藝</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-icon">🎀</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>特殊工藝工具</h3>
+                        <ul class="product-list">
+                            <li>雙色絲帶工具</li>
+                            <li>Tole Painting 彩繪</li>
+                            <li>DIY 工藝材料</li>
+                            <li>客製化工具組</li>
+                        </ul>
+                        <span class="product-tag">創意手作</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-icon">📎</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>塑膠文具與配件</h3>
+                        <ul class="product-list">
+                            <li>膠帶與黏著產品</li>
+                            <li>辦公室文具</li>
+                            <li>桌面收納用品</li>
+                            <li>OEM 文具定制</li>
+                        </ul>
+                        <span class="product-tag">工廠直營</span>
                     </div>
                 </div>
             </div>
+            
             <div class="products-note">
-                <p>✦ All products can be customized with your brand (OEM/ODM service available)</p>
-                <p>✦ MOQ and pricing available upon request</p>
+                <p>所有產品均可依客戶品牌 OEM/ODM 定制</p>
+                <p>最低訂量與報價請來電或來信詢問</p>
+            </div>
+            
+            <div class="products-gallery-link">
+                <a href="products.html" class="btn-gallery">
+                    <span>📷</span> 瀏覽完整產品圖庫 (22類產品 · 879張圖片)
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Export Section -->
-    <section id="export" class="export">
+    <section class="export" id="export">
         <div class="container">
-            <div class="section-header">
-                <h2>Export Services</h2>
-                <p class="section-subtitle">Your Gateway to Quality Taiwanese Products</p>
-            </div>
-            <div class="export-content">
-                <div class="export-text">
-                    <p>Kiu Fong Enterprise holds a valid export license (No. 63021457) issued since 1978. We have extensive experience in international trade and can handle shipments worldwide.</p>
+            <div class="export-grid">
+                <div class="export-content">
+                    <span class="section-label">外銷服務</span>
+                    <h2>全球供應商的信賴選擇</h2>
+                    <p>僑峯企業持有有效出口許可證（第63021457號），自1978年起從事國際貿易。我們與全球各地的經銷商和進口商建立長期合作關係，提供優質的台灣製造產品。</p>
+                    
                     <div class="export-features">
                         <div class="export-item">
                             <span class="check-icon">✓</span>
-                            <span>Export license holder since 1978</span>
+                            <span>自1978年持有出口許可證</span>
                         </div>
                         <div class="export-item">
                             <span class="check-icon">✓</span>
-                            <span>Experience in international trade</span>
+                            <span>豐富的國際貿易經驗</span>
                         </div>
                         <div class="export-item">
                             <span class="check-icon">✓</span>
-                            <span>Flexible shipping arrangements</span>
+                            <span>彈性的出貨安排</span>
                         </div>
                         <div class="export-item">
                             <span class="check-icon">✓</span>
-                            <span>Documentation support</span>
+                            <span>完整的出口文件支援</span>
                         </div>
                     </div>
                 </div>
+                
                 <div class="export-process">
-                    <h3>Working Process</h3>
+                    <h3>合作流程</h3>
                     <div class="process-steps">
                         <div class="step">
-                            <span class="step-number">01</span>
-                            <h4>Inquiry</h4>
-                            <p>Send us your requirements</p>
+                            <div class="step-number">01</div>
+                            <h4>詢價</h4>
+                            <p>提供需求</p>
                         </div>
                         <div class="step">
-                            <span class="step-number">02</span>
-                            <h4>Quotation</h4>
-                            <p>We provide detailed pricing</p>
+                            <div class="step-number">02</div>
+                            <h4>報價</h4>
+                            <p>詳細報價</p>
                         </div>
                         <div class="step">
-                            <span class="step-number">03</span>
-                            <h4>Sample</h4>
-                            <p>Sample production & approval</p>
+                            <div class="step-number">03</div>
+                            <h4>樣品</h4>
+                            <p>樣品確認</p>
                         </div>
                         <div class="step">
-                            <span class="step-number">04</span>
-                            <h4>Production</h4>
-                            <p>Mass production & QC</p>
+                            <div class="step-number">04</div>
+                            <h4>生產</h4>
+                            <p>大量生產</p>
                         </div>
                         <div class="step">
-                            <span class="step-number">05</span>
-                            <h4>Delivery</h4>
-                            <p>Shipping & export handling</p>
+                            <div class="step-number">05</div>
+                            <h4>出貨</h4>
+                            <p>全球配送</p>
                         </div>
                     </div>
                 </div>
@@ -235,77 +330,89 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Contact Us</h2>
-                <p class="section-subtitle">Let's Start Your Project</p>
+                <span class="section-label">聯絡我們</span>
+                <h2 class="section-title">開始您的專案</h2>
+                <p class="section-desc">歡迎詢問產品報價或 OEM/ODM 定制需求</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
+            
+            <div class="contact-grid">
+                <div class="contact-cards">
                     <div class="contact-card">
-                        <h3>Company Address</h3>
+                        <h4>公司地址</h4>
                         <p>
-                            <strong>Kiu Fong Enterprise Co., Ltd.</strong><br>
+                            <span class="highlight">僑峯企業股份有限公司</span><br>
+                            Kiu Fong Enterprise Co., Ltd.<br><br>
+                            台北市南港區南港路三段149巷49弄2號<br>
                             No. 2, Aly. 49, Ln. 149, Sec. 3,<br>
                             Nangang Rd., Nangang Dist.,<br>
                             Taipei City 115027, Taiwan (R.O.C.)
                         </p>
                     </div>
+                    
                     <div class="contact-card">
-                        <h3>Contact Information</h3>
+                        <h4>聯絡資訊</h4>
                         <ul class="contact-list">
                             <li>
-                                <span class="contact-label">Tel:</span>
+                                <span class="contact-label">電話</span>
                                 <a href="tel:+886227826666">+886-2-2782-6666</a>
                             </li>
                             <li>
-                                <span class="contact-label">Fax:</span>
+                                <span class="contact-label">傳真</span>
                                 <span>+886-2-2782-7896</span>
                             </li>
                             <li>
-                                <span class="contact-label">Email:</span>
+                                <span class="contact-label">Email</span>
                                 <a href="mailto:info@kiufong.ddns.net">info@kiufong.ddns.net</a>
                             </li>
                         </ul>
                     </div>
+                    
                     <div class="contact-card">
-                        <h3>Business Hours</h3>
-                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
-                        Saturday - Sunday: Closed</p>
+                        <h4>營業時間</h4>
+                        <p>星期一 - 星期五：上午 9:00 - 下午 6:00<br>
+                        星期六 - 星期日：休息</p>
                     </div>
                 </div>
-                <div class="contact-form-wrapper">
-                    <h3>Send Inquiry</h3>
-                    <form class="contact-form" action="mailto:info@kiufong.ddns.net" method="POST" enctype="text/plain">
-                        <div class="form-group">
-                            <label for="name">Your Name *</label>
-                            <input type="text" id="name" name="name" required>
+                
+                <div class="contact-form">
+                    <h3>傳送詢價</h3>
+                    <form action="mailto:info@kiufong.ddns.net" method="POST" enctype="text/plain">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">您的姓名 *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">電子郵件 *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company Name</label>
+                            <label for="company">公司名稱</label>
                             <input type="text" id="company" name="company">
                         </div>
                         <div class="form-group">
-                            <label for="product">Interested Product</label>
+                            <label for="product">感興趣的產品</label>
                             <select id="product" name="product">
-                                <option value="">Select a product category</option>
-                                <option value="stationery">Plastic Stationery</option>
-                                <option value="arts">Art Supplies</option>
-                                <option value="homedecor">Wooden Home Decor</option>
-                                <option value="oem">OEM/ODM Service</option>
-                                <option value="other">Other</option>
+                                <option value="">請選擇產品類別</option>
+                                <option value="palette">美術調色工具</option>
+                                <option value="easel">木製畫架與展示</option>
+                                <option value="carving">雕刻與塑造工具</option>
+                                <option value="ceramic">陶瓷工藝品</option>
+                                <option value="special">特殊工藝工具</option>
+                                <option value="stationery">塑膠文具</option>
+                                <option value="oem">OEM/ODM 定制</option>
+                                <option value="other">其他</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Please describe your requirements..."></textarea>
+                            <label for="message">訊息 *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="請描述您的需求，包括產品類型、數量、目標市場等..."></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">Send Inquiry</button>
+                        <button type="submit" class="btn-submit">傳送詢價</button>
                     </form>
                 </div>
             </div>
@@ -315,23 +422,93 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-brand">
-                    <span class="footer-logo">KIU FONG ENTERPRISE</span>
-                    <p>Quality Stationery & Home Decor Since 1971</p>
+                    <div class="logo">
+                        <div class="logo-icon">🎨</div>
+                        <div class="logo-text">
+                            <span class="logo-name">僑峯企業</span>
+                        </div>
+                    </div>
+                    <p>專業美術用品與木製工藝品製造商。<br>五十四年信賴，品質保証。</p>
                 </div>
-                <div class="footer-contact">
-                    <p>Tel: +886-2-2782-6666</p>
-                    <p>Email: info@kiufong.ddns.net</p>
+                <div>
+                    <h4>快速連結</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">關於我們</a></li>
+                        <li><a href="#products">產品展示</a></li>
+                        <li><a href="#export">外銷服務</a></li>
+                        <li><a href="#contact">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>聯絡資訊</h4>
+                    <ul class="footer-links">
+                        <li>電話：+886-2-2782-6666</li>
+                        <li>傳真：+886-2-2782-7896</li>
+                        <li>Email：info@kiufong.ddns.net</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 Kiu Fong Enterprise Co., Ltd. All Rights Reserved.</p>
-                <p>Tax ID: 11829322 | Export License: No. 63021457</p>
+                <p>統一編號：11829322 | 出口許可證：第 63021457 號</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('navMenu').classList.remove('active');
+                    document.getElementById('hamburger').classList.remove('active');
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Active navigation highlight
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

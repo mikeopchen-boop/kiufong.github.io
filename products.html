@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品圖庫 | 僑峯企業</title>
+    <meta name="description" content="僑峯企業產品圖庫 - 美術用品、木製工藝品、調色盤、畫架等879張產品圖片">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .products-header {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+            padding: 140px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .products-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+            opacity: 0.1;
+            transform: skewX(-15deg);
+            right: -25%;
+        }
+        
+        .lang-switch {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        
+        .lang-btn {
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-medium);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .lang-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .filter-section {
+            background: white;
+            padding: 30px;
+            margin: -30px auto 40px;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .filter-title {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 10px 24px;
+            background: var(--cream);
+            color: var(--text-medium);
+            border: none;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-card .product-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--cream) 0%, #f0ebe5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+        
+        .product-card .product-info {
+            padding: 25px;
+        }
+        
+        .product-card .product-category {
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .product-card .product-name {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .product-card .product-count {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+        
+        .lightbox-title {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .lightbox-close {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lightbox-close:hover {
+            background: var(--accent);
+        }
+        
+        .lightbox-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 60px 100px;
+        }
+        
+        .lightbox-main {
+            max-width: 85%;
+            max-height: 75vh;
+            position: relative;
+        }
+        
+        .lightbox-main img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lightbox-nav:hover {
+            background: var(--accent);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        .lightbox-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .thumbnail-strip {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            max-width: 80%;
+            padding: 10px;
+        }
+        
+        .thumb-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .thumb-img:hover,
+        .thumb-img.active {
+            opacity: 1;
+            border: 3px solid var(--accent);
+        }
+        
+        .lightbox-counter {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .back-link:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: var(--accent);
+            color: white;
+        }
+        
+        .gallery-footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--cream);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 0 20px 60px;
+            }
+            
+            .filter-section {
+                margin: -20px 20px 30px;
+                padding: 20px;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            
+            .lightbox-content {
+                padding: 60px 20px;
+            }
+            
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .lightbox-prev {
+                left: 5px;
+            }
+            
+            .lightbox-next {
+                right: 5px;
+            }
+            
+            .thumbnail-strip {
+                max-width: 95%;
+            }
+            
+            .thumb-img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <a href="#" class="lang-btn active" data-lang="zh">繁體中文</a>
+        <a href="#" class="lang-btn" data-lang="en">English</a>
+    </div>
+
+    <div class="products-header">
+        <div class="container">
+            <span class="section-label">產品展示</span>
+            <h1 class="section-title" id="page-title">完整產品圖庫</h1>
+            <p class="section-desc" id="page-desc">瀏覽我們的879張產品圖片，涵蓋22個產品分類</p>
+            <br><br>
+            <a href="index.html" class="back-link">← 返回主頁</a>
+        </div>
+    </div>
+    
+    <div class="filter-section">
+        <p class="filter-title" id="filter-title">產品分類</p>
+        <div class="filter-buttons" id="filter-buttons">
+            <button class="filter-btn active" data-filter="all" data-zh="全部產品" data-en="All Products">全部產品</button>
+            <button class="filter-btn" data-filter="wooden" data-zh="木製品" data-en="Wooden Products">木製品</button>
+            <button class="filter-btn" data-filter="tools" data-zh="美術工具" data-en="Art Tools">美術工具</button>
+            <button class="filter-btn" data-filter="ceramic" data-zh="陶瓷製品" data-en="Ceramic">陶瓷製品</button>
+            <button class="filter-btn" data-filter="catalog" data-zh="新品型錄" data-en="New Catalog">新品型錄</button>
+        </div>
+    </div>
+    
+    <div class="gallery" id="gallery"></div>
+    
+    <div class="gallery-footer">
+        <p style="color: var(--text-medium); margin-bottom: 15px;">找不到您要的產品？</p>
+        <a href="index.html#contact" class="btn btn-primary">聯絡我們詢問</a>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-header">
+            <span class="lightbox-title" id="lightbox-title"></span>
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        </div>
+        <div class="lightbox-content">
+            <button class="lightbox-nav lightbox-prev" onclick="prevImage()">‹</button>
+            <div class="lightbox-main">
+                <img id="lightbox-img" src="" alt="">
+            </div>
+            <button class="lightbox-nav lightbox-next" onclick="nextImage()">›</button>
+        </div>
+        <div class="lightbox-footer">
+            <div class="thumbnail-strip" id="thumbnail-strip"></div>
+        </div>
+        <p class="lightbox-counter" id="lightbox-counter"></p>
+    </div>
+
+    <script>
+    const translations = {
+        zh: {
+            title: '完整產品圖庫',
+            desc: '瀏覽我們的879張產品圖片，涵蓋22個產品分類',
+            filterTitle: '產品分類',
+            allProducts: '全部產品',
+            filterLabels: { wooden: '木製品', tools: '美術工具', ceramic: '陶瓷製品', catalog: '新品型錄' },
+            imageCount: '張圖片',
+            noImages: '暫無圖片'
+        },
+        en: {
+            title: 'Products Gallery',
+            desc: 'Browse our 879 product images across 22 categories',
+            filterTitle: 'Product Categories',
+            allProducts: 'All Products',
+            filterLabels: { wooden: 'Wooden', tools: 'Art Tools', ceramic: 'Ceramic', catalog: 'New Catalog' },
+            imageCount: 'images',
+            noImages: 'No images'
+        }
+    };
+
+    const products = [
+        // Catalog
+        { category: 'catalog', name: '2015 New Products', name_zh: '2015 新產品', folder: '2015new', count: 2 },
+        { category: 'catalog', name: '2014 New Products', name_zh: '2014 新產品', folder: '2014new', count: 1 },
+        { category: 'catalog', name: '2012 New Products', name_zh: '2012 新產品', folder: '2012 new', count: 21 },
+        { category: 'catalog', name: '2011 New Products', name_zh: '2011 新產品', folder: '2011new', count: 27 },
+        
+        // Wooden
+        { category: 'wooden', name: 'Wooden Easel', name_zh: '木製畫架', folder: 'wooden easel', count: 54 },
+        { category: 'wooden', name: 'Wooden Hand Model', name_zh: '木製手部模型', folder: 'wooden hand', count: 12 },
+        { category: 'wooden', name: 'Wooden Manikin', name_zh: '木製人像模型', folder: 'wooden manikin', count: 81 },
+        { category: 'wooden', name: 'Wooden Sketch Box', name_zh: '木製素描盒', folder: 'WOODEN SKETCH BOX', count: 102 },
+        { category: 'wooden', name: 'Wooden Modeling Tools', name_zh: '木製雕塑工具', folder: 'wooden modeling tools', count: 117 },
+        { category: 'wooden', name: 'Wooden Piece', name_zh: '木製工藝品', folder: 'WOODEN PIECE', count: 5 },
+        { category: 'wooden', name: 'Carving Holder', name_zh: '雕刻筆筒', folder: 'carving holder', count: 12 },
+        { category: 'wooden', name: 'Carving Set', name_zh: '雕刻工具組', folder: 'carving set', count: 24 },
+        { category: 'wooden', name: 'Cubes', name_zh: '木方塊', folder: 'cubes', count: 18 },
+        
+        // Tools
+        { category: 'tools', name: 'Palette', name_zh: '調色盤', folder: 'palette', count: 39 },
+        { category: 'tools', name: 'Scraper', name_zh: '刮刀', folder: 'scraper', count: 60 },
+        { category: 'tools', name: 'Double Ribbon Tools', name_zh: '雙色絲帶工具', folder: 'double ribbon tools', count: 63 },
+        { category: 'tools', name: 'Wireend Tools', name_zh: '線端工具', folder: 'wireend tools', count: 57 },
+        { category: 'tools', name: 'Wood Ceramic Tools', name_zh: '木陶瓷工具', folder: 'wood ceramic tools', count: 93 },
+        { category: 'tools', name: 'Tole Painting', name_zh: '油漆畫', folder: 'Tole Painting', count: 33 },
+        
+        // Ceramic
+        { category: 'ceramic', name: 'Ceramic Tripod', name_zh: '陶瓷三腳架', folder: 'ceramic tripod', count: 18 },
+        { category: 'ceramic', name: 'Porcelain Palette', name_zh: '瓷調色盤', folder: 'procelain palettes', count: 36 }
+    ];
+
+    let currentLang = 'zh';
+    let currentFilter = 'all';
+    let currentProductIndex = 0;
+    let windowProductImages = [];
+    let windowCurrentIndex = 0;
+
+    function getName(product) {
+        return currentLang === 'zh' ? product.name_zh : product.name;
+    }
+
+    function getCategoryName(category) {
+        if (currentLang === 'zh') {
+            return { catalog: '新品型錄', wooden: '木製品', tools: '美術工具', ceramic: '陶瓷製品' }[category];
+        }
+        return category.charAt(0).toUpperCase() + category.slice(1);
+    }
+
+    function renderGallery() {
+        const gallery = document.getElementById('gallery');
+        const filtered = currentFilter === 'all' 
+            ? products 
+            : products.filter(p => p.category === currentFilter);
+        
+        gallery.innerHTML = filtered.map((p, i) => `
+            <div class="product-card" onclick="openProduct(${i})">
+                <div class="product-image">
+                    <img src="images/${p.folder}/1.jpg" alt="${getName(p)}" onerror="this.style.display='none'; this.parentElement.innerHTML='📦';">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">${getCategoryName(p.category)}</div>
+                    <div class="product-name">${getName(p)}</div>
+                    <div class="product-count">${p.count} ${currentLang === 'zh' ? '張圖片' : 'images'}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function openProduct(index) {
+        const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
+        currentProductIndex = index;
+        const product = filtered[index];
+        
+        windowProductImages = [];
+        for (let i = 1; i <= product.count; i++) {
+            windowProductImages.push({
+                src: `images/${product.folder}/${i}.jpg`,
+                thumb: `images/${product.folder}/${i}.jpg`
+            });
+        }
+        
+        if (windowProductImages.length === 0) {
+            windowProductImages.push({ src: 'images/placeholder.jpg', thumb: 'images/placeholder.jpg' });
+        }
+        
+        windowCurrentIndex = 0;
+        document.getElementById('lightbox-title').textContent = getName(product);
+        showImage(0);
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function showImage(idx) {
+        const img = windowProductImages[idx];
+        if (!img) return;
+        
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox-counter').textContent = `${idx + 1} / ${windowProductImages.length}`;
+        
+        // Update thumbnails
+        const strip = document.getElementById('thumbnail-strip');
+        strip.innerHTML = windowProductImages.map((im, i) => 
+            `<img class="thumb-img ${i === idx ? 'active' : ''}" src="${im.thumb}" onclick="showImage(${i})" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22/>">`
+        ).join('');
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function prevImage() {
+        windowCurrentIndex = (windowCurrentIndex - 1 + windowProductImages.length) % windowProductImages.length;
+        showImage(windowCurrentIndex);
+    }
+
+    function nextImage() {
+        windowCurrentIndex = (windowCurrentIndex + 1) % windowProductImages.length;
+        showImage(windowCurrentIndex);
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            renderGallery();
+        });
+    });
+
+    // Language switch
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentLang = btn.dataset.lang;
+            
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const t = translations[currentLang];
+            document.getElementById('page-title').textContent = t.title;
+            document.getElementById('page-desc').textContent = t.desc;
+            document.getElementById('filter-title').textContent = t.filterTitle;
+            
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.textContent = currentLang === 'zh' ? b.dataset.zh : b.dataset.en;
+            });
+            
+            renderGallery();
+        });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (document.getElementById('lightbox').classList.contains('active')) {
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'Escape') closeLightbox();
+        }
+    });
+
+    // Initialize
+    renderGallery();
+    </script>
+</body>
+</html>
