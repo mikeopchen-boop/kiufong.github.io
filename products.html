@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>產品圖庫 | 僑峯企業</title>
-    <meta name="description" content="僑峯企業產品圖庫 - 美術用品、木製工藝品、調色盤、畫架等879張產品圖片">
+    <meta name="description" content="僑峯企業產品圖庫 - 美術用品、木製工藝品、調色盤、畫架等產品圖片">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -167,6 +167,12 @@
         
         .product-card .product-count {
             font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
             color: var(--text-light);
         }
         
@@ -398,7 +404,7 @@
         <div class="container">
             <span class="section-label">產品展示</span>
             <h1 class="section-title" id="page-title">完整產品圖庫</h1>
-            <p class="section-desc" id="page-desc">瀏覽我們的879張產品圖片，涵蓋22個產品分類</p>
+            <p class="section-desc" id="page-desc">點擊任一產品分類，瀏覽所有產品圖片</p>
             <br><br>
             <a href="index.html" class="back-link">← 返回主頁</a>
         </div>
@@ -415,7 +421,9 @@
         </div>
     </div>
     
-    <div class="gallery" id="gallery"></div>
+    <div class="gallery" id="gallery">
+        <div class="loading-spinner">載入中...</div>
+    </div>
     
     <div class="gallery-footer">
         <p style="color: var(--text-medium); margin-bottom: 15px;">找不到您要的產品？</p>
@@ -445,53 +453,56 @@
     const translations = {
         zh: {
             title: '完整產品圖庫',
-            desc: '瀏覽我們的879張產品圖片，涵蓋22個產品分類',
+            desc: '點擊任一產品分類，瀏覽所有產品圖片',
             filterTitle: '產品分類',
             allProducts: '全部產品',
             filterLabels: { wooden: '木製品', tools: '美術工具', ceramic: '陶瓷製品', catalog: '新品型錄' },
             imageCount: '張圖片',
+            loading: '載入中...',
             noImages: '暫無圖片'
         },
         en: {
             title: 'Products Gallery',
-            desc: 'Browse our 879 product images across 22 categories',
+            desc: 'Click on any category to browse all product images',
             filterTitle: 'Product Categories',
             allProducts: 'All Products',
             filterLabels: { wooden: 'Wooden', tools: 'Art Tools', ceramic: 'Ceramic', catalog: 'New Catalog' },
             imageCount: 'images',
+            loading: 'Loading...',
             noImages: 'No images'
         }
     };
 
+    // Product data with actual first image for each folder
     const products = [
         // Catalog
-        { category: 'catalog', name: '2015 New Products', name_zh: '2015 新產品', folder: '2015new', count: 2 },
-        { category: 'catalog', name: '2014 New Products', name_zh: '2014 新產品', folder: '2014new', count: 1 },
-        { category: 'catalog', name: '2012 New Products', name_zh: '2012 新產品', folder: '2012 new', count: 21 },
-        { category: 'catalog', name: '2011 New Products', name_zh: '2011 新產品', folder: '2011new', count: 27 },
+        { category: 'catalog', name: '2015 New Products', name_zh: '2015 新產品', folder: '2015new', firstImage: '2015New Products.jpg', count: 2 },
+        { category: 'catalog', name: '2014 New Products', name_zh: '2014 新產品', folder: '2014new', firstImage: '2014New Products.jpg', count: 1 },
+        { category: 'catalog', name: '2012 New Products', name_zh: '2012 新產品', folder: '2012 new', firstImage: 'New products for December_1.jpg', count: 21 },
+        { category: 'catalog', name: '2011 New Products', name_zh: '2011 新產品', folder: '2011new', firstImage: '2011 NEW PRODUCTS 1.JPG', count: 27 },
         
         // Wooden
-        { category: 'wooden', name: 'Wooden Easel', name_zh: '木製畫架', folder: 'wooden easel', count: 54 },
-        { category: 'wooden', name: 'Wooden Hand Model', name_zh: '木製手部模型', folder: 'wooden hand', count: 12 },
-        { category: 'wooden', name: 'Wooden Manikin', name_zh: '木製人像模型', folder: 'wooden manikin', count: 81 },
-        { category: 'wooden', name: 'Wooden Sketch Box', name_zh: '木製素描盒', folder: 'WOODEN SKETCH BOX', count: 102 },
-        { category: 'wooden', name: 'Wooden Modeling Tools', name_zh: '木製雕塑工具', folder: 'wooden modeling tools', count: 117 },
-        { category: 'wooden', name: 'Wooden Piece', name_zh: '木製工藝品', folder: 'WOODEN PIECE', count: 5 },
-        { category: 'wooden', name: 'Carving Holder', name_zh: '雕刻筆筒', folder: 'carving holder', count: 12 },
-        { category: 'wooden', name: 'Carving Set', name_zh: '雕刻工具組', folder: 'carving set', count: 24 },
-        { category: 'wooden', name: 'Cubes', name_zh: '木方塊', folder: 'cubes', count: 18 },
+        { category: 'wooden', name: 'Wooden Easel', name_zh: '木製畫架', folder: 'wooden easel', firstImage: 'ED-01.jpg', count: 54 },
+        { category: 'wooden', name: 'Wooden Hand Model', name_zh: '木製手部模型', folder: 'wooden hand', firstImage: 'IMG_3678.JPG', count: 12 },
+        { category: 'wooden', name: 'Wooden Manikin', name_zh: '木製人像模型', folder: 'wooden manikin', firstImage: '12女木頭人(原).JPG', count: 81 },
+        { category: 'wooden', name: 'Wooden Sketch Box', name_zh: '木製素描盒', folder: 'WOODEN SKETCH BOX', firstImage: 'ESP-88.jpg', count: 102 },
+        { category: 'wooden', name: 'Wooden Modeling Tools', name_zh: '木製雕塑工具', folder: 'wooden modeling tools', firstImage: '#01.JPG', count: 117 },
+        { category: 'wooden', name: 'Wooden Piece', name_zh: '木製工藝品', folder: 'WOODEN PIECE', firstImage: 'IMG_2557.JPG', count: 5 },
+        { category: 'wooden', name: 'Carving Holder', name_zh: '雕刻筆筒', folder: 'carving holder', firstImage: 'Carving Kolder11.jpg', count: 12 },
+        { category: 'wooden', name: 'Carving Set', name_zh: '雕刻工具組', folder: 'carving set', firstImage: 'carving block.JPG', count: 24 },
+        { category: 'wooden', name: 'Cubes', name_zh: '木方塊', folder: 'cubes', firstImage: '1.jpg', count: 18 },
         
         // Tools
-        { category: 'tools', name: 'Palette', name_zh: '調色盤', folder: 'palette', count: 39 },
-        { category: 'tools', name: 'Scraper', name_zh: '刮刀', folder: 'scraper', count: 60 },
-        { category: 'tools', name: 'Double Ribbon Tools', name_zh: '雙色絲帶工具', folder: 'double ribbon tools', count: 63 },
-        { category: 'tools', name: 'Wireend Tools', name_zh: '線端工具', folder: 'wireend tools', count: 57 },
-        { category: 'tools', name: 'Wood Ceramic Tools', name_zh: '木陶瓷工具', folder: 'wood ceramic tools', count: 93 },
-        { category: 'tools', name: 'Tole Painting', name_zh: '油漆畫', folder: 'Tole Painting', count: 33 },
+        { category: 'tools', name: 'Palette', name_zh: '調色盤', folder: 'palette', firstImage: 'normal_P-46.jpg', count: 39 },
+        { category: 'tools', name: 'Scraper', name_zh: '刮刀', folder: 'scraper', firstImage: 'C-26#1.JPG', count: 60 },
+        { category: 'tools', name: 'Double Ribbon Tools', name_zh: '雙色絲帶工具', folder: 'double ribbon tools', firstImage: 'C-12#2.JPG', count: 63 },
+        { category: 'tools', name: 'Wireend Tools', name_zh: '線端工具', folder: 'wireend tools', firstImage: '8 3-4#1.JPG', count: 57 },
+        { category: 'tools', name: 'Wood Ceramic Tools', name_zh: '木陶瓷工具', folder: 'wood ceramic tools', firstImage: 'C-27#1.JPG', count: 93 },
+        { category: 'tools', name: 'Tole Painting', name_zh: '油漆畫', folder: 'Tole Painting', firstImage: 'normal_TP-01~TP-16.jpg', count: 33 },
         
         // Ceramic
-        { category: 'ceramic', name: 'Ceramic Tripod', name_zh: '陶瓷三腳架', folder: 'ceramic tripod', count: 18 },
-        { category: 'ceramic', name: 'Porcelain Palette', name_zh: '瓷調色盤', folder: 'procelain palettes', count: 36 }
+        { category: 'ceramic', name: 'Ceramic Tripod', name_zh: '陶瓷三腳架', folder: 'ceramic tripod', firstImage: 'CERAMIC TRIPOD1.jpg', count: 18 },
+        { category: 'ceramic', name: 'Porcelain Palette', name_zh: '瓷調色盤', folder: 'procelain palettes', firstImage: 'CB-116.jpg', count: 36 }
     ];
 
     let currentLang = 'zh';
@@ -517,10 +528,15 @@
             ? products 
             : products.filter(p => p.category === currentFilter);
         
+        if (filtered.length === 0) {
+            gallery.innerHTML = `<div class="loading-spinner">${translations[currentLang].noImages}</div>`;
+            return;
+        }
+        
         gallery.innerHTML = filtered.map((p, i) => `
             <div class="product-card" onclick="openProduct(${i})">
                 <div class="product-image">
-                    <img src="images/${p.folder}/1.jpg" alt="${getName(p)}" onerror="this.style.display='none'; this.parentElement.innerHTML='📦';">
+                    <img src="images/${encodeURIComponent(p.folder)}/${encodeURIComponent(p.firstImage)}" alt="${getName(p)}" onerror="this.style.display='none'; this.parentElement.innerHTML='📦';">
                 </div>
                 <div class="product-info">
                     <div class="product-category">${getCategoryName(p.category)}</div>
@@ -536,37 +552,75 @@
         currentProductIndex = index;
         const product = filtered[index];
         
+        // Generate image list based on count
         windowProductImages = [];
-        for (let i = 1; i <= product.count; i++) {
-            windowProductImages.push({
-                src: `images/${product.folder}/${i}.jpg`,
-                thumb: `images/${product.folder}/${i}.jpg`
-            });
+        const exts = ['.jpg', '.JPG', '.png', '.PNG', '.jpeg', '.JPEG'];
+        
+        // Try to determine actual file patterns
+        if (product.folder === 'wooden easel') {
+            // ED-01.jpg to ED-54.jpg
+            for (let i = 1; i <= 54; i++) {
+                windowProductImages.push(`images/${product.folder}/ED-${String(i).padStart(2,'0')}.jpg`);
+            }
+        } else if (product.folder === 'cubes') {
+            // 1.jpg, 2.jpg, etc.
+            for (let i = 1; i <= 18; i++) {
+                windowProductImages.push(`images/${product.folder}/${i}.jpg`);
+            }
+        } else {
+            // Fallback: use the first image
+            windowProductImages.push(`images/${product.folder}/${product.firstImage}`);
         }
         
-        if (windowProductImages.length === 0) {
-            windowProductImages.push({ src: 'images/placeholder.jpg', thumb: 'images/placeholder.jpg' });
-        }
+        // Filter to only existing images (check first image exists)
+        windowProductImages = [windowProductImages[0]]; // Start with first image
         
         windowCurrentIndex = 0;
         document.getElementById('lightbox-title').textContent = getName(product);
         showImage(0);
         document.getElementById('lightbox').classList.add('active');
         document.body.style.overflow = 'hidden';
+        
+        // Try to preload all images
+        preloadImages(product);
+    }
+    
+    function preloadImages(product) {
+        // For wooden easel, try to load all
+        if (product.folder === 'wooden easel') {
+            windowProductImages = [];
+            for (let i = 1; i <= 54; i++) {
+                const img = new Image();
+                img.src = `images/${product.folder}/ED-${String(i).padStart(2,'0')}.jpg`;
+                img.onload = function() {
+                    windowProductImages.push(img.src);
+                    if (i === 54) showImage(windowCurrentIndex);
+                };
+                img.onerror = function() {
+                    if (i === 54) showImage(windowCurrentIndex);
+                };
+            }
+        } else {
+            showImage(windowCurrentIndex);
+        }
     }
 
     function showImage(idx) {
         const img = windowProductImages[idx];
         if (!img) return;
         
-        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox-img').src = img;
         document.getElementById('lightbox-counter').textContent = `${idx + 1} / ${windowProductImages.length}`;
         
         // Update thumbnails
         const strip = document.getElementById('thumbnail-strip');
-        strip.innerHTML = windowProductImages.map((im, i) => 
-            `<img class="thumb-img ${i === idx ? 'active' : ''}" src="${im.thumb}" onclick="showImage(${i})" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22/>">`
-        ).join('');
+        if (windowProductImages.length <= 20) {
+            strip.innerHTML = windowProductImages.map((im, i) => 
+                `<img class="thumb-img ${i === idx ? 'active' : ''}" src="${im}" onclick="showImage(${i})" onerror="this.style.display='none'">`
+            ).join('');
+        } else {
+            strip.innerHTML = '';
+        }
     }
 
     function closeLightbox() {
