@@ -574,8 +574,9 @@
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
             
-            // Show/hide elements based on language
+            // Show/hide elements based on language (exclude lang-toggle)
             document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.closest('.lang-toggle')) return; // Skip lang toggle buttons
                 if (el.dataset.lang === lang) {
                     el.style.display = '';
                 } else {
