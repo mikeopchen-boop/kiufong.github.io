@@ -80,14 +80,13 @@ h1, h2, h3, h4, h5 {
 }
 
 .logo-icon {
-    width: 45px;
-    height: 45px;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--wood-dark) 100%);
-    border-radius: 12px;
+    width: 120px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    background: url('../images/logo.jpg') no-repeat center;
+    background-size: contain;
 }
 
 .logo-text {
