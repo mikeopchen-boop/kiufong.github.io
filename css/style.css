@@ -210,7 +210,7 @@ body {
     position: relative;
     overflow: hidden;
     background: url('../images/hero-bg.jpg') no-repeat right center;
-    background-size: 50% auto;
+    background-size: 30% 80%;
     padding-top: 80px;
 }
 
